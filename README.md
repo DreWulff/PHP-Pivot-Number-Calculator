@@ -45,11 +45,11 @@ By calculating the first few numbers, multiple patterns can be observed:
 Considering the previous observations, the search algorithm has been adjusted to use the discovered ratios as parameters.
 
 The process goes through the following steps:
-* Initial number being checked (from now on `x`) is set to `2`.
+* Initial number being checked (`x` from now on) is set to `2`.
 * Sum of previous numbers is set to `1`.
-* Scaling parameter (from now on `scaling_parameter`) is set to `5.8`.
-* Ratio of following numbers (from now on `ratio`) is set to `3`.
-* Up until de required amount of pivots is found, the next process is repeated:
+* Scaling parameter (`scaling_parameter` from now on) is set to `5.8`.
+* Ratio of following numbers (`ratio` from now on) is set to `3`.
+* Up until the required amount of pivots is found, the next process is repeated:
     * An auxiliar number (`aux`) is defined as the division of `x / ratio`.
     * An initial estimation of the sum of the following numbers is calculated as `(x * aux) + (aux * (aux + 1) / 2)`.
     * The numbers that follow `x + aux` are added until the sum is larger or equal than the sum of the previous numbers.
