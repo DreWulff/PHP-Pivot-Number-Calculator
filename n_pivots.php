@@ -1,23 +1,23 @@
 <?php
 function n_pivots($pivots)
 {
-	$actualNumber = 2; # Empezamos desde el 2
-	$scalingParameter = 5.828427; # Parametro de escalado. Cada numero pivote es
-	# aproximadamente 5.8 veces mayor al anterior.
-	$sumPrevious = 1; # Suma de numeros previos
-	$sumPosterior = 0; # Suma de numeros posteriores
-	$factor = 3; # Parametro correspondiente a la cantidad de sucesores a sumar.
+	$actualNumber = 2; # First number to try
+	$scalingParameter = 5.828427; # Scaling parameter. Each pivot number is
+	# approximately 5.8 times larger than the previous one.
+	$sumPrevious = 1; # Sum of all previous numbers.
+	$sumPosterior = 0; # Sum of successors.
+	$factor = 3; # Parameter to calculate the number of successors.
 
 	while ($pivots > 0){
-		# Se calcula una suma estimada inicial de los sucesores del numero actual.
+		# An initial estimate of the sum of the successors of the current number is calculated.
 		$aux = (int)($actualNumber / $factor);
 		$sumPosterior = ($actualNumber) * $aux + $aux * ($aux + 1) / 2;
-		# Se siguen sumando sucesores hasta que la suma posterior sea mayor a la suma anterior.
+		# More successors are added until the sum is greater than the sum of the previous numbers.
 		while ($sumPosterior < $sumPrevious){
 			$aux += 1;
 			$sumPosterior += $actualNumber + $aux;
 		}
-		# Se verifica si la suma posterior es igual a la suma anterior.
+		# Verification of the pivot number condition.
 		if ($sumPosterior == $sumPrevious) {
 			echo $actualNumber;
 			$pivots -= 1;
@@ -30,6 +30,6 @@ function n_pivots($pivots)
 		$actualNumber += 1;
 	}
 }
-
-n_pivots(100); # Se llama a la funcion para encontrar los primeros X numeros pivote.
+# Example of use:
+n_pivots(100);
 ?>
